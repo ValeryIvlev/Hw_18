@@ -1,0 +1,48 @@
+plugins {
+    id 'java-library'
+    id "io.qameta.allure" version "2.11.2"
+}
+
+repositories {
+    mavenCentral()
+}
+
+allure {
+    report {
+        version.set("2.20.1")
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.20.1")
+            }
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+dependencies {
+    testImplementation (
+            "com.github.javafaker:javafaker:1.0.2",
+            'com.codeborne:selenide:6.11.0',
+            'io.qameta.allure:allure-selenide:2.20.0',
+            "org.junit.jupiter:junit-jupiter:5.9.1",
+            'org.slf4j:slf4j-simple:2.0.5',
+            "io.rest-assured:rest-assured:5.1.0"
+    )
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}
