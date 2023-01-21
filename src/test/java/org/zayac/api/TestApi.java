@@ -1,6 +1,7 @@
 package org.zayac.api;
 
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -10,6 +11,7 @@ import static org.hamcrest.Matchers.notNullValue;
 public class TestApi {
 
     @Test
+    @DisplayName("Проверка данных пользователя под id 2")
     public void checkNameUser2() {
 
         given()
@@ -24,6 +26,7 @@ public class TestApi {
 
     }
     @Test
+    @DisplayName("Проверка изменения должности у пользователя")
     public void updateJob() {
 
         String data = "{\n" +
@@ -45,6 +48,7 @@ public class TestApi {
 
     }
     @Test
+    @DisplayName("Проверка создания пользователя")
     public void createUser() {
 
         String newUser = "{\n" +
@@ -66,6 +70,7 @@ public class TestApi {
 
     }
     @Test
+    @DisplayName("Проверка запроса данных у несуществуюшего пользователя")
     public void checkUnknownUser() {
 
         given()
@@ -78,6 +83,7 @@ public class TestApi {
 
     }
     @Test
+    @DisplayName("Проверка регистрации нового пользователя")
     public void registerNewUser() {
 
         String newUser = "{\n" +
